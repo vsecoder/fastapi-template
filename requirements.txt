@@ -1,0 +1,13 @@
+aerich
+fastapi
+uvicorn
+aiohttp
+aiosqlite
+cachetools
+coloredlogs
+redis
+toml
+tortoise-orm
+requests
+gitpython
+nest-asyncio
