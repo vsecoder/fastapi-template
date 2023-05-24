@@ -16,27 +16,27 @@ from datetime import datetime
 
 
 async def on_startup(
-    disp, loop, config: Config, **kwargs
+    disp, config: Config, **kwargs
 ):
     tortoise_config = config.database.get_tortoise_config()
     await init_orm(tortoise_config)
 
-    #logging.info(f"None - {None}")
+    logging.info(f"Build: {kwargs['build']}")
+    logging.info(f"Update: {kwargs['upd']}")
+    logging.info(f"Started at: {kwargs['start_time']}")
 
     web_config = config.web.get_config()
-    
+
     logging.error("Started!")
 
     uvicorn.run(
         disp,
         host=web_config["host"],
-        port=web_config["port"],
-        #log_level=web_config["log_level"],
-        #loop=loop
+        port=web_config["port"]
     )
 
 
-async def on_shutdown(config: Config):
+async def on_shutdown():
     logging.warning("Stopping...")
     await close_orm()
 
@@ -70,7 +70,7 @@ async def main(loop):
 
 if __name__ == "__main__":
     try:
-        asyncio.run(main(asyncio.get_event_loop()))
+        asyncio.run(main())
     except (KeyboardInterrupt, SystemExit):
         asyncio.run(on_shutdown())
         logging.error("Stopped!")

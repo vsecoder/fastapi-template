@@ -45,18 +45,10 @@ class ConfigDatabase:
             },
         }
 
-
-#@dataclass
-#class ConfigSettings:
-#    throttling_rate: float = 0.5
-#    drop_pending_updates: bool = True
-
-
 @dataclass
 class Config:
     web: ConfigWeb
     database: ConfigDatabase
-    #settings: ConfigSettings
 
     @classmethod
     def parse(cls, data: dict) -> "Config":
