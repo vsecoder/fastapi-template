@@ -41,7 +41,7 @@ async def on_shutdown():
     await close_orm()
 
 
-async def main(loop):
+async def main():
     coloredlogs.install(level=logging.INFO)
     logging.warning("Starting...")
 
@@ -65,7 +65,7 @@ async def main(loop):
 
     disp = dispatcher(context_kwargs)
 
-    await on_startup(disp, loop, config, **context_kwargs)
+    await on_startup(disp, config, **context_kwargs)
 
 
 if __name__ == "__main__":

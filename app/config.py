@@ -9,8 +9,6 @@ import toml
 class ConfigWeb:
     host: str
     port: int
-    debug: bool
-    auto_reload: bool
 
     def get_config(self):
         return {

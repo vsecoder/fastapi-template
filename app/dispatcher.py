@@ -9,7 +9,7 @@ def dispatcher(context):
     @app.get("/")
     async def root():
         return {
-            "file": __name__,
+            "dispatcher": __name__,
             "upd": context["upd"],
             "build": context["build"],
             "start_time": context["start_time"],
