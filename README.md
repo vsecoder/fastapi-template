@@ -37,10 +37,10 @@ sudo nano /etc/systemd/system/fastapi.service
 Enter this:
 
 ```
+[Unit]
 Description=FastApi
 [Service]
 WorkingDirectory=/home/<USERNAME>/fastapi-template
-Environment=PYTHONPATH=/home/<USERNAME>/fastapi-template
 ExecStart=/home/<USERNAME>/fastapi-template/venv/bin/python3 -m app
 Type=simple
 Restart=always
